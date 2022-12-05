@@ -1,3 +1,5 @@
+package adventurereal;
+
 public class Person {
     String name;
 
