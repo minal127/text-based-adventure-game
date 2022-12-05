@@ -1,22 +1,34 @@
 package adventurereal;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Room {
-    ArrayList<String> roomnames =  new ArrayList<>(Arrays.asList("Living Room", "Kitchen", "Main Room", "Bathroom"));
+    static ArrayList<Room> roomnames =  new ArrayList<>();
     ArrayList<Item> items =  new ArrayList<>();
+    String name;
+    String description;
 
-    public String generateRandomRoom() {
+
+    public Room(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+    public static Room chooseRandomRoom() {
         Random generator = new Random();
         int randomIndex = generator.nextInt(roomnames.size());
 
-        String choice = roomnames.get(randomIndex);
-        roomnames.remove(choice);
+        Room randomRoom = roomnames.get(randomIndex);
+        roomnames.remove(randomRoom);
         System.out.println(roomnames);
-        return choice;
+        return randomRoom;
+    }
 
+    public static void generateRooms() {
+        roomnames.add(new Room("Living Room", "This room contains a tv and a remote......"));
+        roomnames.add(new Room("Kitchen", "there are women in it, as always"));
+        roomnames.add(new Room("Main Room", "this is the main room"));
+        roomnames.add(new Room("Bathroom", "there is piss on the floor"));
     }
 
     public void generateItems() {
